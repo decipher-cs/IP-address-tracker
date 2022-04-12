@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | IP Address Tracker</title>
+
+    <!-- Feel free to remove these styles or customize in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <header class="hero">
+      <h1 class="hero__heading">IP Address Tracker</h1>
+      <div class="hero__input-wrapper">
+        <input
+          class="hero__input-wrapper__input"
+          type="text"
+          placeholder="Search for any IP address or domain"
+        />
+        <button class="hero__input-wrapper__submit-btn">></button>
+      </div>
+      <main class="info-card">
+        <h6 class="info-card__ip-title">IP Address</h6>
+        <p class="info-card__ip-content"></p>
+        <h6 class="info-card__location-title">Location</h6>
+        <p class="info-card__location-content"></p>
+        <h6 class="info-card__timezone-title">Timezone</h6>
+        <p class="info-card__timezone-content"></p>
+        <h6 class="info-card__utc-title">
+          UTC
+          <!-- add offset value dynamically using the API -->
+        </h6>
+        <p class="info-card__utc-content"></p>
+        <h6 class="info-card__isp-title">ISP</h6>
+        <p class="info-card__isp-content"></p>
+      </main>
+    </header>
+    <!-- <map name="">sample  map here.</map> -->
+    <div id="map"></div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""
+  ></script>
+  <script src="/js/map.js"></script>
+</html>
