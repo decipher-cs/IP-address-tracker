@@ -16,6 +16,9 @@ button, input{
     border: 0px;
     background-color: unset;
 }
+button{
+    cursor: pointer;
+}
 body{
     min-height: 100vh;
 }
@@ -24,13 +27,14 @@ body{
     color: var.$white-text;
 
     overflow: show;
+    position: relative;
     display: grid;
-    grid-template-rows: min-content min-content 50px;
 
     text-align: center;
     gap: 30px;
 
     padding: var.$global-padding;
+    padding-bottom: calc(var.$global-padding + 100px);
     background: url('/images/pattern-bg.png') no-repeat;
     background-position: center;
     background-size: cover;
@@ -43,7 +47,7 @@ body{
         width: clamp(0px, 80vw ,var.$desktop-media-query);
         
         border-radius: var.$box-border-radius;
-        border: 2px red solid;
+        // border: 2px red solid;
     }
     &__input-wrapper__input{
         flex-basis: 90%;
@@ -52,23 +56,44 @@ body{
         background-color: white;
     }
     &__input-wrapper__submit-btn{
+        position: relative;
+        overflow: visible;
         flex-basis: 10%;
         
         padding: var.$global-padding;
         background-image: url("/images/icon-arrow.svg"), linear-gradient(black, black);
         background-repeat: no-repeat, no-repeat;
         background-position: center;
+
     }
+    &__input-wrapper__submit-btn::after{
+        position: absolute;
+        overflow: visible;
+        display: inline-block; 
+        display: none;
+        content: '';
+        inset: 0px;
+
+        margin: 10px;
+        // height: 100%; 
+        // width: 100%;      
+        border: 2px red solid;
+        // transform: rotate(180deg);
+        // transition: transform 0.2s ease-in-out;
+        box-shadow: 0px 0px 20px 30px red;
+    }
+
 
 }
 
 .info-card{
-    position: relative;
-    // top: 50%;
+    position: absolute;
     z-index: 2;
-    // transform: translateY(80%);
+    transform: translate(-50%, 50%);
 
-    margin-inline: auto;
+    // inset-inline: 100px;
+    // right: 0px;
+    left: 50%;
     width: clamp(0px, 80vw , calc(var.$desktop-media-query * 1.5));
     
     padding: var.$global-padding;

@@ -14,6 +14,10 @@ button, input {
   background-color: unset;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   min-height: 100vh;
 }
@@ -21,12 +25,12 @@ body {
 .hero {
   color: rgb(227, 227, 227);
   overflow: show;
+  position: relative;
   display: grid;
-  grid-template-rows: -webkit-min-content -webkit-min-content 50px;
-  grid-template-rows: min-content min-content 50px;
   text-align: center;
   gap: 30px;
   padding: 1em;
+  padding-bottom: calc(1em + 100px);
   background: url("/images/pattern-bg.png") no-repeat;
   background-position: center;
   background-size: cover;
@@ -37,7 +41,6 @@ body {
   margin-inline: auto;
   width: clamp(0px, 80vw, 500px);
   border-radius: 10px;
-  border: 2px red solid;
 }
 .hero__input-wrapper__input {
   flex-basis: 90%;
@@ -45,17 +48,31 @@ body {
   background-color: white;
 }
 .hero__input-wrapper__submit-btn {
+  position: relative;
+  overflow: visible;
   flex-basis: 10%;
   padding: 1em;
   background-image: url("/images/icon-arrow.svg"), linear-gradient(black, black);
   background-repeat: no-repeat, no-repeat;
   background-position: center;
 }
+.hero__input-wrapper__submit-btn::after {
+  position: absolute;
+  overflow: visible;
+  display: inline-block;
+  display: none;
+  content: "";
+  inset: 0px;
+  margin: 10px;
+  border: 2px red solid;
+  box-shadow: 0px 0px 20px 30px red;
+}
 
 .info-card {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  margin-inline: auto;
+  transform: translate(-50%, 50%);
+  left: 50%;
   width: clamp(0px, 80vw, 750px);
   padding: 1em;
   border-radius: 10px;
