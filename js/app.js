@@ -12,9 +12,8 @@ let map = new L.map('map' , mapOptions);
 let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(layer);
 
-let marker = new L.Marker([51.958, 9.141]);
-marker.addTo(map);
-
+let marker = new L.Marker([0, 0]);
+// marker.addTo(map);
 
 
 /////////////////////////////////
@@ -34,7 +33,7 @@ let address;
 // card selectors
 const ip = document.querySelector(".info-card__ip-content");
 const loc = document.querySelector(".info-card__location-content");
-const timezone = document.querySelector(".info-card__timezone-title");
+const timezone = document.querySelector(".info-card__timezone-content");
 const utc = document.querySelector(".info-card__utc-content");
 const isp = document.querySelector(".info-card__isp-content");
 
@@ -49,15 +48,18 @@ const isp = document.querySelector(".info-card__isp-content");
 
 let editCard = (data)=>{
     console.log(data)
-    ip.textContent = data.ip
+    ip.textContent = data.ip.toString()
     loc.textContent = `${data.region}, ${data.city}`
-    timezone.textContent = data.timezone
-    utc.textContent = data.utc_offset
-    isp.textContent = data.org
+    timezone.textContent = data.timezone.toString()
+    utc.textContent = data.utc_offset.toString()
+    isp.textContent = data.org.toString()
 }
 
 let changeMap = (loc)=>{
     map.flyTo(L.latLng(loc.latitude, loc.longitude), 12)
+    marker.remove(map);
+    marker = new L.marker([loc.latitude, loc.longitude])
+    marker.addTo(map);
 }
 
 
