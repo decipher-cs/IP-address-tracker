@@ -1,6 +1,28 @@
+///////////////////////////
+//* Map initialization *//
+/////////////////////////
+
+let mapOptions = {
+    center:[51.958, 9.141],
+    zoom:2
+}
+
+let map = new L.map('map' , mapOptions);
+
+let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+map.addLayer(layer);
+
+let marker = new L.Marker([51.958, 9.141]);
+marker.addTo(map);
+
+
+
 /////////////////////////////////
 //*  Variables and Constants *//
 ///////////////////////////////
+
+// Map
+// const map = document.getElementById("map");
 
 // form selectors
 const inputForm = document.querySelector(".hero__input-wrapper");
@@ -34,6 +56,11 @@ let editCard = (data)=>{
     isp.textContent = data.org
 }
 
+let changeMap = (loc)=>{
+    map.flyTo(L.latLng(loc.latitude, loc.longitude), 12)
+}
+
+
 ///////////////////////////
 //*  Event Listeners   *//
 //////////////////////////
@@ -46,6 +73,14 @@ inputForm.addEventListener("submit", (form) => {
     fetch(`https://ipapi.co/${address}/json`).then((req) => {
         return req.json()
     }).then((item) => {
-        editCard(item)
+        editCard(item);
+        changeMap(item);
     })
 })
+
+// mapOptions = {
+//     center:[40.712776, -74.123],
+//     zoom:12
+// }
+
+// map.setView(10, 12)
