@@ -6,10 +6,10 @@
 // Map initialization 
 
 let mapOptions = {
-    center:[51.958, 9.141],
-    zoom:2
+    center: [51.958, 9.141],
+    zoom: 2
 }
-let map = new L.map('map' , mapOptions);
+let map = new L.map('map', mapOptions);
 let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(layer);
 let marker = new L.Marker([0, 0]);
@@ -23,12 +23,15 @@ const inputField = document.querySelector("#ip-domain-input");
 let address;
 
 // card selectors
+const infoCard = document.querySelector(".info-card");
 const ip = document.querySelector(".info-card__ip-content");
 const loc = document.querySelector(".info-card__location-content");
 const timezone = document.querySelector(".info-card__timezone-content");
 const utc = document.querySelector(".info-card__utc-content");
 const isp = document.querySelector(".info-card__isp-content");
 
+// card collapsing pseudo element
+const collapser = document.querySelector(".info-card-collapsing-wrapper");
 
 
 
@@ -37,7 +40,7 @@ const isp = document.querySelector(".info-card__isp-content");
 ////////////////////
 
 // Fill the input-card with info about the ip address
-let editCard = (data)=>{
+let editCard = (data) => {
     console.log(data)
     ip.textContent = data.ip.toString()
     loc.textContent = `${data.region}, ${data.city}`
@@ -47,7 +50,7 @@ let editCard = (data)=>{
 }
 
 // Pan the map to match the location of the current ip address
-let changeMap = (loc)=>{
+let changeMap = (loc) => {
     map.flyTo(L.latLng(loc.latitude, loc.longitude), 12)
     marker.remove(map);
     marker = new L.marker([loc.latitude, loc.longitude])
@@ -70,4 +73,17 @@ inputForm.addEventListener("submit", (form) => {
         editCard(item);
         changeMap(item);
     })
+})
+
+
+collapser.addEventListener("click", (e) => {
+    if (e.target.classList == "info-card-collapsing-wrapper") {
+        if (infoCard.style.display == 'none') {
+            infoCard.style.display = "block"
+            infoCard.style.overflow = "visible"
+        } else {
+            infoCard.style.overflow = "hidden"
+            infoCard.style.display = "none"
+        }
+    }
 })
