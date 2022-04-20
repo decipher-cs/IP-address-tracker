@@ -45,7 +45,6 @@ let editCard = (data) => {
     ip.textContent = data.ip.toString()
     loc.textContent = `${data.region}, ${data.city}`
     timezone.textContent = data.timezone.toString()
-    utc.textContent = data.utc_offset.toString()
     isp.textContent = data.org.toString()
 }
 
@@ -79,7 +78,7 @@ inputForm.addEventListener("submit", (form) => {
 collapser.addEventListener("click", (e) => {
     if (e.target.classList == "info-card-collapsing-wrapper") {
         if (infoCard.style.display == 'none') {
-            infoCard.style.display = "block"
+            infoCard.style.display = "grid"
             infoCard.style.overflow = "visible"
         } else {
             infoCard.style.overflow = "hidden"

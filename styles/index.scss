@@ -1,169 +1,206 @@
 // @import url('/styles/__var.scss');
-@use "./__var.scss" as var ;
+@use "./__var.scss" as var;
 
 @font-face {
-    font-family: 'Rubik', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap') format('woff2');
+  font-family: "Rubik", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap")
+    format("woff2");
 }
 
-*,*::before, *::after{
-    font-family: 'Rubik', sans-serif;
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+*,
+*::before,
+*::after {
+  font-family: "Rubik", sans-serif;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
-button, input{
-    border: 0px;
-    background-color: unset;
+button,
+input {
+  border: 0px;
+  background-color: unset;
 }
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
-body{
-    display: grid;
+body {
+  display: grid;
 
-    grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content 1fr min-content;
 
-    height: 100vh;
-    overflow: visible;
+  height: 100vh;
+  overflow: visible;
 }
 
-.hero{
-    color: var.$white-text;
+.hero {
+  color: var.$white-text;
 
-    overflow: show;
-    position: relative;
-    display: grid;
+  overflow: show;
+  position: relative;
+  display: grid;
 
-    text-align: center;
-    gap: 30px;
+  text-align: center;
+  gap: 30px;
+
+  padding: var.$global-padding;
+  background: url("/images/pattern-bg.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__input-wrapper {
+    display: flex;
+    overflow: hidden;
+
+    margin-inline: auto;
+    width: clamp(0px, 80vw, var.$desktop-media-query);
+
+    border-radius: var.$box-border-radius;
+  }
+  &__input-wrapper__input {
+    font-size: 1.1rem;
+    flex-basis: 90%;
 
     padding: var.$global-padding;
-    background: url('/images/pattern-bg.png') no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    &__input-wrapper{
-        display: flex;
-        overflow: hidden;
-
-        margin-inline: auto;
-        width: clamp(0px, 80vw ,var.$desktop-media-query);
-        
-        border-radius: var.$box-border-radius;
-        // border: 2px red solid;
-    }
-    &__input-wrapper__input{
-        flex-basis: 90%;
-        
-        padding: var.$global-padding;
-        background-color: white;
-    }
-    &__input-wrapper__submit-btn{
-        position: relative;
-        overflow: visible;
-        flex-basis: 10%;
-        
-        padding: var.$global-padding;
-        background-image: url("/images/icon-arrow.svg"), linear-gradient(black, black);
-        background-repeat: no-repeat, no-repeat;
-        background-position: center;
-
-    }
-    &__input-wrapper__submit-btn::after{
-        position: absolute;
-        overflow: visible;
-        display: inline-block; 
-        display: none;
-        content: '';
-        inset: 0px;
-
-        margin: 10px;
-        // height: 100%; 
-        // width: 100%;      
-        border: 2px red solid;
-        // transform: rotate(180deg);
-        // transition: transform 0.2s ease-in-out;
-        box-shadow: 0px 0px 20px 30px red;
-    }
-
-
-}
-
-.info-card-collapsing-wrapper::after{
-    position: absolute;
-    display: inline-grid;
-    content: url(https://img.icons8.com/material/24/000000/circled-up--v1.png);
-
-    right: 0px;
-    aspect-ratio: 1/1;
-    
-    transform: rotate(180deg);
-    transition: transform 1s ease-in-out;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-
-    cursor: pointer;
-}
-.info-card-collapsing-wrapper{
-    place-self: center;
-
-    overflow: visible;
-    position: relative;
-    
-//     left: 50%;
-    // top: 100%;
-    height: 50px;
-    width: clamp(0px, 80vw , calc(var.$desktop-media-query * 1.5));
-    
-    // transform: translate(-50%, 50%);
-    // transform: translateX(-50%);
-    
-    // background-color: black;
-    border-radius: var.$box-border-radius;
-    z-index: 2;
-}
-.info-card{
-    overflow: visible;
-    // display: none;
-    
-    position: absolute;
-    // transform: translate(-50%, 50%);
-    // left: 50%;
-    // z-index: 2;
-    
-    width: clamp(0px, 80vw , calc(var.$desktop-media-query * 1.5));
-    
-    padding: var.$global-padding;
-    border-radius: var.$box-border-radius;
     background-color: white;
+  }
+  &__input-wrapper__submit-btn {
+    position: relative;
+    overflow: visible;
+    flex-basis: 10%;
+
+    padding: var.$global-padding;
+    background-image: url("/images/icon-arrow.svg"),
+      linear-gradient(black, black);
+    background-repeat: no-repeat, no-repeat;
+    background-position: center;
+  }
+  &__input-wrapper__submit-btn::after {
+    position: absolute;
+    overflow: visible;
+    display: inline-block;
+    display: none;
+    content: "";
+    inset: 0px;
+
+    margin: 10px;
+    border: 2px red solid;
+    box-shadow: 0px 0px 20px 30px red;
+  }
+}
+
+.info-card-collapsing-wrapper::after {
+  position: absolute;
+  display: inline-grid;
+  content: url(https://img.icons8.com/material/24/000000/circled-up--v1.png);
+
+  right: 0px;
+  aspect-ratio: 1/1;
+
+  transform: rotate(180deg);
+  transition: transform 1s ease-in-out;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.info-card-collapsing-wrapper {
+  place-self: center;
+
+  overflow: visible;
+  position: relative;
+
+  height: 50px;
+  width: clamp(0px, 80vw, calc(var.$desktop-media-query * 1.5));
+
+
+  border-radius: var.$box-border-radius;
+  z-index: 2;
+}
+
+.info-card {
+  overflow: visible;
+
+  position: absolute;
+
+  width: clamp(0px, 80vw, calc(var.$desktop-media-query * 1.5));
+
+  padding: var.$global-padding;
+  border-radius: var.$box-border-radius;
+  background-color: white;
+
+  @media screen and (min-width: var.$desktop-media-query) {
+    display: grid;
+   
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     
-    *:nth-child(2n){
-        margin-bottom: 20px;
-    }
-    h6{
-        color: var.$Dark-Gray;
-        margin-bottom: 5px;
-    }
-    p{
-        color: black;
-    }
-}
+    column-gap: 30px;
+    row-gap: 5px;
 
-#map{
-    z-index: 1;
-    width: 100%;
-}
+    text-align: left;
+  }
 
-.attribution{
-    display: block;
-    text-align: center;
+  *:nth-child(2n) {
+    margin-bottom: 20px;
+    @media screen and (min-width: var.$desktop-media-query) {
+      grid-row: 2/3;
+    }
+  }
+
+  h6:not(:nth-child(1))::before {
+    @media screen and (min-width: var.$desktop-media-query) {
+      display: inline-block;
+      position: absolute;
+      content: "";
+
+      height: 600%;
+
+      left: -10px;
+      top: 0px;
+      bottom: 0px;
+
+      $Dark-Gray: hsla(0, 0%, 59%, 0.1);
+      background-color: $Dark-Gray;
+      border: solid $Dark-Gray 1px;
+      border-radius: var.$box-border-radius;
+      border-radius: 100px;
+    }
+  }
+
+  h6 {
+    color: var.$Dark-Gray;
     text-transform: uppercase;
-    
-    background: url('/images/pattern-bg.png') no-repeat;
-    
-    a{
-        color: var.$white-text;
-        text-decoration: unset;
-    }
+    letter-spacing: 0.1rem;
+    margin-bottom: 5px;
+    position: relative;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+#map {
+  z-index: 1;
+  width: 100%;
+}
+
+.attribution {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.1rem;
+  
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  background: url("/images/pattern-bg.png") repeat;
+
+  a {
+    color: var.$white-text;
+    text-decoration: unset;
+  }
 }

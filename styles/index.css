@@ -2,14 +2,17 @@
   font-family: "Rubik", sans-serif;
   src: url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap") format("woff2");
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   font-family: "Rubik", sans-serif;
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
 }
 
-button, input {
+button,
+input {
   border: 0px;
   background-color: unset;
 }
@@ -42,10 +45,11 @@ body {
   display: flex;
   overflow: hidden;
   margin-inline: auto;
-  width: clamp(0px, 80vw, 500px);
+  width: clamp(0px, 80vw, 700px);
   border-radius: 10px;
 }
 .hero__input-wrapper__input {
+  font-size: 1.1rem;
   flex-basis: 90%;
   padding: 1em;
   background-color: white;
@@ -89,7 +93,7 @@ body {
   overflow: visible;
   position: relative;
   height: 50px;
-  width: clamp(0px, 80vw, 750px);
+  width: clamp(0px, 80vw, 1050px);
   border-radius: 10px;
   z-index: 2;
 }
@@ -97,20 +101,57 @@ body {
 .info-card {
   overflow: visible;
   position: absolute;
-  width: clamp(0px, 80vw, 750px);
+  width: clamp(0px, 80vw, 1050px);
   padding: 1em;
   border-radius: 10px;
   background-color: white;
 }
+@media screen and (min-width: 700px) {
+  .info-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+    row-gap: 5px;
+    text-align: left;
+  }
+}
 .info-card *:nth-child(2n) {
   margin-bottom: 20px;
 }
+@media screen and (min-width: 700px) {
+  .info-card *:nth-child(2n) {
+    grid-row: 2/3;
+  }
+}
+@media screen and (min-width: 700px) {
+  .info-card h6:not(:nth-child(1))::before {
+    display: inline-block;
+    position: absolute;
+    content: "";
+    height: 600%;
+    left: -10px;
+    top: 0px;
+    bottom: 0px;
+    background-color: hsla(0deg, 0%, 59%, 0.1);
+    border: solid hsla(0deg, 0%, 59%, 0.1) 1px;
+    border-radius: 10px;
+    border-radius: 100px;
+  }
+}
 .info-card h6 {
   color: hsl(0deg, 0%, 59%);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
   margin-bottom: 5px;
+  position: relative;
 }
 .info-card p {
+  font-size: 1.5rem;
+  font-weight: 500;
   color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #map {
@@ -119,10 +160,13 @@ body {
 }
 
 .attribution {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.1rem;
   display: block;
   text-align: center;
   text-transform: uppercase;
-  background: url("/images/pattern-bg.png") no-repeat;
+  background: url("/images/pattern-bg.png") repeat;
 }
 .attribution a {
   color: rgb(227, 227, 227);
