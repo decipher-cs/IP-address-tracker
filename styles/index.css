@@ -19,7 +19,11 @@ button {
 }
 
 body {
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: -webkit-min-content 1fr -webkit-min-content;
+  grid-template-rows: min-content 1fr min-content;
+  height: 100vh;
+  overflow: show;
 }
 
 .hero {
@@ -90,6 +94,16 @@ body {
 
 #map {
   z-index: 1;
-  height: 400px;
   width: 100%;
+}
+
+.attribution {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  background: url("/images/pattern-bg.png") no-repeat;
+}
+.attribution a {
+  color: rgb(227, 227, 227);
+  text-decoration: unset;
 }/*# sourceMappingURL=index.css.map */

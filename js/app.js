@@ -1,27 +1,19 @@
-///////////////////////////
-//* Map initialization *//
-/////////////////////////
-
-let mapOptions = {
-    center:[51.958, 9.141],
-    zoom:2
-}
-
-let map = new L.map('map' , mapOptions);
-
-let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-map.addLayer(layer);
-
-let marker = new L.Marker([0, 0]);
-// marker.addTo(map);
-
 
 /////////////////////////////////
 //*  Variables and Constants *//
 ///////////////////////////////
 
-// Map
-// const map = document.getElementById("map");
+// Map initialization 
+
+let mapOptions = {
+    center:[51.958, 9.141],
+    zoom:2
+}
+let map = new L.map('map' , mapOptions);
+let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+map.addLayer(layer);
+let marker = new L.Marker([0, 0]);
+
 
 // form selectors
 const inputForm = document.querySelector(".hero__input-wrapper");
@@ -45,7 +37,6 @@ const isp = document.querySelector(".info-card__isp-content");
 ////////////////////
 
 // Fill the input-card with info about the ip address
-
 let editCard = (data)=>{
     console.log(data)
     ip.textContent = data.ip.toString()
@@ -55,6 +46,7 @@ let editCard = (data)=>{
     isp.textContent = data.org.toString()
 }
 
+// Pan the map to match the location of the current ip address
 let changeMap = (loc)=>{
     map.flyTo(L.latLng(loc.latitude, loc.longitude), 12)
     marker.remove(map);
@@ -79,10 +71,3 @@ inputForm.addEventListener("submit", (form) => {
         changeMap(item);
     })
 })
-
-// mapOptions = {
-//     center:[40.712776, -74.123],
-//     zoom:12
-// }
-
-// map.setView(10, 12)
