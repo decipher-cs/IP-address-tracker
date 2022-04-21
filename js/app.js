@@ -74,7 +74,7 @@ inputForm.addEventListener("submit", (form) => {
     })
 })
 
-
+// add a collapse button on the card to hide/ unhide it
 collapser.addEventListener("click", (e) => {
     if (e.target.classList == "info-card-collapsing-wrapper") {
         if (infoCard.style.display == 'none') {
