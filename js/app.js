@@ -63,7 +63,7 @@ let changeMap = (loc) => {
 
 // on form submit save user input address
 inputForm.addEventListener("submit", (form) => {
-    form.preventDefault
+    form.preventDefault()
     address = inputField.value
 
     fetch(`https://ipapi.co/${address}/json`).then((req) => {
