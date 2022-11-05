@@ -74,5 +74,6 @@ body{
 
 ## Acknowledgments
 
+- [Repository icon - Shmai from flaticon](https://www.flaticon.com/authors/shmai)
 - [Leaflet](https://leafletjs.com/)
 - [IPapi](https://ipapi.co/)
